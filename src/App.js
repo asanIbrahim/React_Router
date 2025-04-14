@@ -1,42 +1,26 @@
-import { useReducer } from "react";
-import Home from "../src/components/Home";
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "increment":
-      return { count: state.count + 1 };
-    case "decrement":
-      if (state.count > 0) {
-        return { count: state.count - 1 };
-      }
-      break;
-    default:
-      return state;
-  }
-}
+import Home from "./Pages/Home";
+import "./App.css";
+import User from "./Pages/User";
+import About from "./Pages/About";
+import Profile from "./Pages/Profile";
+import Instagram from "./Pages/Instagram";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
-  // const [count, Setcount] = useState(0);
-  const [state, disPatch] = useReducer(reducer, { count: 0 });
-
-  const increaseCount = () => {
-    disPatch({ type: "increment" });
-  };
-
-  const decrementcount = () => {
-    disPatch({ type: "decrement" });
-  };
-
   return (
     <>
-      <div>
-        <h1>
-          <button onClick={increaseCount}>+</button>
-          <button onClick={decrementcount}>-</button>
-          {state.count}
-          <Home />
-        </h1>
-      </div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/instagram/:userName" element={<Instagram />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<h1>404-Page Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
