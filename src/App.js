@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar  userName="instagram"/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<User />} />

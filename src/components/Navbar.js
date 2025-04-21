@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({userName}) => {
   return (
     <nav className="navbar">
       <h1>Welcome</h1>
@@ -19,9 +19,9 @@ const Navbar = () => {
         <Link to="/profile" className="nav-link">
           profile
         </Link>
-        {/* <Link to="/instagram/userName" className="nav-link">
+        <Link to={`/instagram/${userName}`} className="nav-link">
           Instagram
-        </Link> */}
+        </Link>
       </ul>
     </nav>
   );
